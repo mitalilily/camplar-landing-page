@@ -14,6 +14,8 @@ export default function SiteHeader({ onPrimaryAction }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const isContactPage = pathname === "/contact";
+  const getStartedHref =
+    pathname === "/" ? companyInfo.getStartedPath : `/${companyInfo.getStartedPath}`;
 
   return (
     <header className="sticky top-0 z-50 shadow-[0_10px_30px_rgba(0,29,103,0.08)]">
@@ -32,17 +34,15 @@ export default function SiteHeader({ onPrimaryAction }) {
             <span className="hidden text-white/90 lg:inline">{companyInfo.address}</span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="grid w-full grid-cols-2 gap-3 sm:w-auto sm:grid-cols-none sm:grid-flow-col sm:items-center">
             <a
-              className="rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
-              href={companyInfo.loginUrl}
-              rel="noreferrer"
-              target="_blank"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
+              href={getStartedHref}
             >
-              Login
+              Get Started
             </a>
             <a
-              className="rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
               href={companyInfo.trackingUrl}
               rel="noreferrer"
               target="_blank"
