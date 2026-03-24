@@ -134,7 +134,7 @@ function HomePage() {
       <main>
         <section className="hero-gradient border-b border-[#d7edff]" id="hero" ref={heroRef}>
           <Motion.div
-            className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:px-8 lg:py-24"
+            className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:px-8 lg:py-24"
             style={heroMotionStyle}
           >
             <Reveal className="max-w-3xl" delay={0.05}>
@@ -171,7 +171,7 @@ function HomePage() {
                 </Link>
               </div>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              <div className="mt-12 grid gap-4 sm:grid-cols-3">
                 {heroContent.stats.map((item, index) => (
                   <Reveal key={item.label} delay={0.12 + index * 0.06}>
                     <div className="dark-card p-5">
@@ -215,7 +215,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="trust">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               align="center"
               description="Built for fast-moving teams that care about courier performance, shipping economics, and dependable delivery operations."
@@ -293,7 +293,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame section-frame--dark" id="how-it-works">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               dark
               description="A clear workflow from onboarding to dispatch so teams can move faster without juggling courier dashboards."
@@ -322,7 +322,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="features">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               description="Courier aggregators work best when rate comparison, tracking, automation, and integrations live together in one streamlined system."
               label="Features"
@@ -361,7 +361,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="rate-calculator">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <Reveal>
               <div className="surface-card p-6">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -534,7 +534,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="partners">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               description="Build a delivery mix around serviceability, delivery promise, and cost performance without splitting your workflow across tools."
               label="Courier Partners"
@@ -569,7 +569,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="pricing">
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-24">
             <div>
               <SectionIntro
                 description="Let courier comparison and operational visibility protect your margins. The same quote utility above feeds the pricing view below."
@@ -657,7 +657,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="integrations">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               description="Connect order sources and keep fulfilment updates moving back into the systems your team already uses."
               label="Integrations"
@@ -687,7 +687,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="testimonials">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               align="center"
               description="Reviews that reflect the operational value of shipping visibility, better courier choice, and dependable support."
@@ -726,7 +726,7 @@ function HomePage() {
         </section>
 
         <section className="section-frame" id="faq">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <SectionIntro
               description="Common questions around courier aggregation, quoting, integrations, and platform readiness."
               label="FAQ"

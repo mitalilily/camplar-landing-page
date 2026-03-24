@@ -41,8 +41,8 @@ export default function SiteFooter() {
 
   return (
     <footer className="border-t border-white/10 bg-slate-950 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 xl:grid-cols-[1.25fr_1fr]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-12 xl:grid-cols-[1.25fr_1fr]">
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 sm:p-8">
             <img alt="CAMPLAR" className="h-16 w-auto" src="/camplar-logo.png" />
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/72">
@@ -77,7 +77,7 @@ export default function SiteFooter() {
             {footerGroups.map((group) => (
               <div key={group.title} className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
                 <h2 className="font-heading text-lg tracking-[0.18em] text-white">{group.title}</h2>
-                <div className="mt-4 grid gap-3">
+                <div className="mt-4 grid gap-4">
                   {group.links.map((link) => (
                     <FooterLink key={link.label} link={link} />
                   ))}
@@ -87,7 +87,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             {companyInfo.name} &copy; {currentYear}. All rights reserved.
           </p>
