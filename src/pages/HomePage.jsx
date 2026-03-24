@@ -210,174 +210,6 @@ function HomePage() {
                 </div>
               </Reveal>
 
-              <Reveal delay={0.14}>
-                <div className="surface-card p-6" id="rate-calculator">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <Chip
-                        label="Rate calculator"
-                        sx={{
-                          backgroundColor: "rgba(255, 94, 20, 0.12)",
-                          borderRadius: "999px",
-                          color: "#d94b08",
-                          fontFamily: '"Montserrat", sans-serif',
-                          fontSize: "0.68rem",
-                          fontWeight: 700,
-                          letterSpacing: "0.2em",
-                          textTransform: "uppercase",
-                        }}
-                      />
-                      <Typography className="mt-3 font-heading text-3xl tracking-[0.05em] text-slate-950" component="h2">
-                        Quote a lane in seconds
-                      </Typography>
-                      <Typography className="mt-3 max-w-xl text-sm leading-7 text-slate-500" component="p">
-                        Add dead weight plus package dimensions to see actual, volumetric, and billable
-                        weight before you book a shipment.
-                      </Typography>
-                    </div>
-                    <Chip
-                      label="5000 divisor"
-                      sx={{
-                        backgroundColor: "rgba(215, 237, 255, 0.85)",
-                        borderRadius: "999px",
-                        color: "#5b7d9a",
-                        fontFamily: '"Montserrat", sans-serif',
-                        fontSize: "0.68rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                      }}
-                    />
-                  </div>
-
-                  <div className="mt-6 grid gap-4 md:grid-cols-3">
-                    <label className="form-field">
-                      <span>Dead weight (kg)</span>
-                      <input
-                        onChange={handleFieldChange("packageWeight")}
-                        placeholder="0.5"
-                        step="0.01"
-                        type="number"
-                        value={shippingForm.packageWeight}
-                      />
-                    </label>
-                    <label className="form-field">
-                      <span>Pickup pincode</span>
-                      <input
-                        inputMode="numeric"
-                        maxLength={6}
-                        onChange={handleFieldChange("pickupPincode")}
-                        placeholder="380058"
-                        value={shippingForm.pickupPincode}
-                      />
-                    </label>
-                    <label className="form-field">
-                      <span>Delivery pincode</span>
-                      <input
-                        inputMode="numeric"
-                        maxLength={6}
-                        onChange={handleFieldChange("deliveryPincode")}
-                        placeholder="400001"
-                        value={shippingForm.deliveryPincode}
-                      />
-                    </label>
-                  </div>
-
-                  <div className="mt-4 grid gap-4 md:grid-cols-3">
-                    <label className="form-field">
-                      <span>Length (cm)</span>
-                      <input
-                        min="1"
-                        onChange={handleFieldChange("packageLength")}
-                        placeholder="30"
-                        step="0.1"
-                        type="number"
-                        value={shippingForm.packageLength}
-                      />
-                    </label>
-                    <label className="form-field">
-                      <span>Width (cm)</span>
-                      <input
-                        min="1"
-                        onChange={handleFieldChange("packageWidth")}
-                        placeholder="24"
-                        step="0.1"
-                        type="number"
-                        value={shippingForm.packageWidth}
-                      />
-                    </label>
-                    <label className="form-field">
-                      <span>Height (cm)</span>
-                      <input
-                        min="1"
-                        onChange={handleFieldChange("packageHeight")}
-                        placeholder="18"
-                        step="0.1"
-                        type="number"
-                        value={shippingForm.packageHeight}
-                      />
-                    </label>
-                  </div>
-
-                  <Typography className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500" component="p">
-                    Volumetric weight = (length x width x height) / 5000
-                  </Typography>
-
-                  <div className="mt-6 grid gap-4 md:grid-cols-4">
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Dead weight
-                      </p>
-                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
-                        {formatWeight(estimate.actualWeight)}
-                      </p>
-                    </div>
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Volumetric
-                      </p>
-                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
-                        {formatWeight(estimate.volumetricWeight)}
-                      </p>
-                    </div>
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Billable
-                      </p>
-                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
-                        {formatWeight(estimate.billableWeight)}
-                      </p>
-                    </div>
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Estimated cost
-                      </p>
-                      <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
-                        {estimate.estimatedCost ? `${RUPEE}${estimate.estimatedCost}` : "--"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid gap-4 md:grid-cols-2">
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Shipping zone
-                      </p>
-                      <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
-                        {estimate.zoneLabel}
-                      </p>
-                    </div>
-                    <div className="result-card">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                        Expected ETA
-                      </p>
-                      <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
-                        {estimate.eta}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
             </Motion.div>
           </Motion.div>
         </section>
@@ -525,6 +357,179 @@ function HomePage() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section-frame" id="rate-calculator">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <Reveal>
+              <div className="surface-card p-6">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <Chip
+                      label="Rate calculator"
+                      sx={{
+                        backgroundColor: "rgba(255, 94, 20, 0.12)",
+                        borderRadius: "999px",
+                        color: "#d94b08",
+                        fontFamily: '"Montserrat", sans-serif',
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
+                      }}
+                    />
+                    <Typography className="mt-3 font-heading text-3xl tracking-[0.05em] text-slate-950" component="h2">
+                      Quote a lane in seconds
+                    </Typography>
+                    <Typography className="mt-3 max-w-xl text-sm leading-7 text-slate-500" component="p">
+                      Add dead weight plus package dimensions to see actual, volumetric, and billable
+                      weight before you book a shipment.
+                    </Typography>
+                  </div>
+                  <Chip
+                    label="5000 divisor"
+                    sx={{
+                      backgroundColor: "rgba(215, 237, 255, 0.85)",
+                      borderRadius: "999px",
+                      color: "#5b7d9a",
+                      fontFamily: '"Montserrat", sans-serif',
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                    }}
+                  />
+                </div>
+
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <label className="form-field">
+                    <span>Dead weight (kg)</span>
+                    <input
+                      onChange={handleFieldChange("packageWeight")}
+                      placeholder="0.5"
+                      step="0.01"
+                      type="number"
+                      value={shippingForm.packageWeight}
+                    />
+                  </label>
+                  <label className="form-field">
+                    <span>Pickup pincode</span>
+                    <input
+                      inputMode="numeric"
+                      maxLength={6}
+                      onChange={handleFieldChange("pickupPincode")}
+                      placeholder="380058"
+                      value={shippingForm.pickupPincode}
+                    />
+                  </label>
+                  <label className="form-field">
+                    <span>Delivery pincode</span>
+                    <input
+                      inputMode="numeric"
+                      maxLength={6}
+                      onChange={handleFieldChange("deliveryPincode")}
+                      placeholder="400001"
+                      value={shippingForm.deliveryPincode}
+                    />
+                  </label>
+                </div>
+
+                <div className="mt-4 grid gap-4 md:grid-cols-3">
+                  <label className="form-field">
+                    <span>Length (cm)</span>
+                    <input
+                      min="1"
+                      onChange={handleFieldChange("packageLength")}
+                      placeholder="30"
+                      step="0.1"
+                      type="number"
+                      value={shippingForm.packageLength}
+                    />
+                  </label>
+                  <label className="form-field">
+                    <span>Width (cm)</span>
+                    <input
+                      min="1"
+                      onChange={handleFieldChange("packageWidth")}
+                      placeholder="24"
+                      step="0.1"
+                      type="number"
+                      value={shippingForm.packageWidth}
+                    />
+                  </label>
+                  <label className="form-field">
+                    <span>Height (cm)</span>
+                    <input
+                      min="1"
+                      onChange={handleFieldChange("packageHeight")}
+                      placeholder="18"
+                      step="0.1"
+                      type="number"
+                      value={shippingForm.packageHeight}
+                    />
+                  </label>
+                </div>
+
+                <Typography className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500" component="p">
+                  Volumetric weight = (length x width x height) / 5000
+                </Typography>
+
+                <div className="mt-6 grid gap-4 md:grid-cols-4">
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Dead weight
+                    </p>
+                    <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                      {formatWeight(estimate.actualWeight)}
+                    </p>
+                  </div>
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Volumetric
+                    </p>
+                    <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                      {formatWeight(estimate.volumetricWeight)}
+                    </p>
+                  </div>
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Billable
+                    </p>
+                    <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                      {formatWeight(estimate.billableWeight)}
+                    </p>
+                  </div>
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Estimated cost
+                    </p>
+                    <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
+                      {estimate.estimatedCost ? `${RUPEE}${estimate.estimatedCost}` : "--"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Shipping zone
+                    </p>
+                    <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
+                      {estimate.zoneLabel}
+                    </p>
+                  </div>
+                  <div className="result-card">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Expected ETA
+                    </p>
+                    <p className="mt-3 font-heading text-4xl tracking-[0.08em] text-slate-950">
+                      {estimate.eta}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
