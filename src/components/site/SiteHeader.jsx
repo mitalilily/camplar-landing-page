@@ -34,15 +34,15 @@ export default function SiteHeader({ onPrimaryAction }) {
             <span className="hidden text-white/90 lg:inline">{companyInfo.address}</span>
           </div>
 
-          <div className="grid w-full grid-cols-2 gap-3 sm:w-auto sm:grid-cols-none sm:grid-flow-col sm:items-center">
+          <div className="grid w-full grid-cols-2 gap-2 sm:w-auto sm:grid-cols-none sm:grid-flow-col sm:items-center">
             <a
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-2 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
               href={getStartedHref}
             >
               Get Started
             </a>
             <a
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-2 text-white transition hover:border-[#34ccff] hover:text-[#34ccff]"
               href={companyInfo.trackingUrl}
               rel="noreferrer"
               target="_blank"
@@ -116,7 +116,7 @@ export default function SiteHeader({ onPrimaryAction }) {
         </div>
 
         {menuOpen ? (
-          <div className="border-t border-[#d7edff] bg-white px-4 py-4 lg:hidden">
+          <div className="border-t border-[#d7edff] bg-white px-4 py-4 sm:px-6 lg:hidden">
             <div className="mx-auto flex max-w-7xl flex-col gap-2">
               {navItems.map((item) => (
                 <a

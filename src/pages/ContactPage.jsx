@@ -87,7 +87,7 @@ export default function ContactPage() {
 
       <main>
         <section className="hero-gradient border-b border-slate-200/70">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr]">
               <div className="max-w-2xl">
                 <span className="badge-red">Contact CAMPLAR</span>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 </p>
 
                 <div className="mt-10 grid gap-4">
-                  <div className="surface-card p-5">
+                  <div className="surface-card p-6">
                     <p className="section-kicker">Email</p>
                     <a
                       className="mt-3 block text-xl font-semibold text-slate-950 transition hover:text-red-600"
@@ -109,7 +109,7 @@ export default function ContactPage() {
                       {companyInfo.email}
                     </a>
                   </div>
-                  <div className="surface-card p-5">
+                  <div className="surface-card p-6">
                     <p className="section-kicker">Phone</p>
                     <div className="mt-3 flex flex-col gap-2">
                       {companyInfo.phones.map((phone) => (
@@ -123,7 +123,7 @@ export default function ContactPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="surface-card p-5">
+                  <div className="surface-card p-6">
                     <p className="section-kicker">Office address</p>
                     <p className="mt-3 text-lg leading-8 text-slate-600">{companyInfo.address}</p>
                     <a
@@ -140,7 +140,7 @@ export default function ContactPage() {
 
               <div className="grid gap-5">
                 <form
-                  className="surface-card p-6 sm:p-8"
+                  className="surface-card p-6"
                   data-netlify="true"
                   method="POST"
                   name="camplar-contact"
@@ -186,7 +186,7 @@ export default function ContactPage() {
                     </label>
                   </div>
 
-                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <button className="cta-button" disabled={status.type === "loading"} type="submit">
                       {status.type === "loading" ? "Sending..." : "Submit Inquiry"}
                     </button>
