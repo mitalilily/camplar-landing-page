@@ -139,10 +139,12 @@ export const integrations = [
   {
     name: "WooCommerce",
     description: "Import new orders and push shipment milestones back into your commerce workflow.",
+    comingSoon: true,
   },
   {
     name: "Amazon",
     description: "Bring marketplace orders into one operational view for faster dispatch decisions.",
+    comingSoon: true,
   },
 ];
 
@@ -150,20 +152,20 @@ export const testimonials = [
   {
     quote:
       "CAMPLAR gave us cleaner courier selection, faster shipping decisions, and a more confident customer experience during peak season.",
-    name: "John D.",
-    role: "Operations Head, TrendyStyles Apparel",
+    name: "Rohan Mehta",
+    role: "Operations Head, TrendyStyles Apparel, Mumbai",
   },
   {
     quote:
       "The team helps us handle urgent deliveries without losing visibility. We finally have one dependable command center for shipping.",
-    name: "David P.",
-    role: "Supply Chain Director, GlobalTech Enterprises",
+    name: "Priya Sharma",
+    role: "Supply Chain Director, GlobalTech Enterprises, Bengaluru",
   },
   {
     quote:
       "We cut manual courier comparisons drastically. Tracking, COD, and NDR are now far easier for our operations team to manage.",
-    name: "Emma S.",
-    role: "Logistics Manager, Tech Innovators",
+    name: "Arjun Patel",
+    role: "Logistics Manager, Tech Innovators, Ahmedabad",
   },
 ];
 

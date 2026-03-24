@@ -197,13 +197,14 @@ summary::-webkit-details-marker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3.5rem;
+  min-height: 3.3rem;
   border-radius: 999px;
-  padding: 0.95rem 1.5rem;
-  font-size: 0.88rem;
+  padding: 0.9rem 1.65rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -213,14 +214,15 @@ summary::-webkit-details-marker {
 }
 
 .cta-button {
-  background: var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #ff6d2a 0%, #ff5e14 100%);
   color: white;
-  box-shadow: 0 16px 32px rgba(255, 94, 20, 0.28);
+  box-shadow: 0 14px 30px rgba(255, 94, 20, 0.32);
 }
 
 .cta-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 22px 40px rgba(255, 94, 20, 0.34);
+  box-shadow: 0 20px 38px rgba(255, 94, 20, 0.38);
 }
 
 .cta-button--light {
@@ -243,14 +245,14 @@ summary::-webkit-details-marker {
 }
 
 .outline-button--dark {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: transparent;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.04);
   color: white;
 }
 
 .outline-button--dark:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.64);
+  background: rgba(255, 255, 255, 0.14);
   color: white;
 }
 
