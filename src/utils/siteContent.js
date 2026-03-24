@@ -7,7 +7,7 @@ export const companyInfo = {
   address: "C140 SoBo Centre South Bopal Ahmedabad - 380058 Gujarat India",
   getStartedPath: "#rate-calculator",
   trackingUrl:
-    "http://app.camplar.in/tracking/Tracking?Token=zjcUwirWIxf1yJGqQLWlv3aid&#038;AwbNo",
+    "http://app.camplar.in/tracking/Tracking?Token=zjcUwirWIxf1yJGqQLWlv3aid&AwbNo",
   mapEmbed:
     "https://maps.google.com/maps?q=C140%20SOBO%20Center%2C%20South%20Bopal%2C%20Ahmedabad%20380058%2C%20Gujarat%20India.&t=m&z=15&output=embed&iwloc=near",
   mapLink:
