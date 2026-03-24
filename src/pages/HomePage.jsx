@@ -171,10 +171,10 @@ function HomePage() {
                 </Link>
               </div>
 
-              <div className="mt-12 grid gap-4 sm:grid-cols-3">
+              <div className="mt-12 grid items-stretch gap-4 sm:grid-cols-3">
                 {heroContent.stats.map((item, index) => (
-                  <Reveal key={item.label} delay={0.12 + index * 0.06}>
-                    <div className="dark-card p-5">
+                  <Reveal key={item.label} className="h-full" delay={0.12 + index * 0.06}>
+                    <div className="dark-card flex h-full flex-col p-5">
                       <Typography className="font-heading text-3xl tracking-[0.08em] text-white" component="p">
                         {item.value}
                       </Typography>
@@ -329,9 +329,9 @@ function HomePage() {
               title="Everything needed to manage shipping operations from one unified platform"
             />
 
-            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+            <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2 xl:grid-cols-5">
               {features.map((item, index) => (
-                <Reveal key={item.title} delay={index * 0.05}>
+                <Reveal key={item.title} className="h-full" delay={index * 0.05}>
                   <article className="surface-card flex flex-col p-6">
                     <Chip
                       label={item.badge}
@@ -664,17 +664,35 @@ function HomePage() {
               title="Commerce integrations that keep order intake and shipping execution aligned"
             />
 
-            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
               {integrations.map((item, index) => (
-                <Reveal key={item.name} delay={index * 0.05}>
-                  <div className="surface-card p-6">
+                <Reveal key={item.name} className="h-full" delay={index * 0.05}>
+                  <div className="surface-card flex h-full flex-col p-6">
                     <div className="flex items-center gap-4">
                       <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[#001d67] font-heading text-2xl tracking-[0.1em] text-white">
                         {item.name.slice(0, 2).toUpperCase()}
                       </div>
-                      <Typography className="font-heading text-3xl tracking-[0.06em] text-slate-950" component="h3">
-                        {item.name}
-                      </Typography>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Typography className="font-heading text-3xl tracking-[0.06em] text-slate-950" component="h3">
+                          {item.name}
+                        </Typography>
+                        {item.comingSoon ? (
+                          <Chip
+                            label="Coming Soon"
+                            size="small"
+                            sx={{
+                              backgroundColor: "rgba(255, 94, 20, 0.12)",
+                              borderRadius: "999px",
+                              color: "#d94b08",
+                              fontFamily: '"Montserrat", sans-serif',
+                              fontSize: "0.6rem",
+                              fontWeight: 700,
+                              letterSpacing: "0.12em",
+                              textTransform: "uppercase",
+                            }}
+                          />
+                        ) : null}
+                      </div>
                     </div>
                     <Typography className="mt-5 text-sm leading-7 text-slate-500" component="p">
                       {item.description}
