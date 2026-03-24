@@ -21,7 +21,6 @@ export const companyInfo = {
 };
 
 export const navItems = [
-  { label: "Home", href: "#hero" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Features", href: "#features" },
   { label: "Partners", href: "#partners" },

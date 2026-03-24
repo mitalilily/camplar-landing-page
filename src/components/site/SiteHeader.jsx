@@ -55,10 +55,10 @@ export default function SiteHeader({ onPrimaryAction }) {
 
       <div className="border-b border-[#d7edff] bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <Link className="flex min-w-0 items-center" to="/">
+          <Link className="flex min-w-0 flex-1 items-center lg:flex-none" to="/">
             <img
               alt="CAMPLAR"
-              className="h-12 w-auto shrink-0 sm:h-14"
+              className="h-14 w-auto shrink-0 sm:h-16"
               src="/camplar-logo-sticky.png"
             />
           </Link>
