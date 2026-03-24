@@ -176,7 +176,7 @@ export const faqs = [
   {
     question: "Can I calculate shipping costs before I book?",
     answer:
-      "Yes. The landing page calculator gives a quick estimate based on weight and pickup or delivery pincodes so teams can forecast costs early.",
+      "Yes. The landing page calculator compares dead weight and volumetric weight with pickup and delivery pincodes so teams can forecast billable shipping costs early.",
   },
   {
     question: "Do you support multiple courier partners?",

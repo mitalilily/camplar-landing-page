@@ -29,9 +29,20 @@ const initialForm = {
   packageWeight: "",
   pickupPincode: "",
   deliveryPincode: "",
+  packageLength: "",
+  packageWidth: "",
+  packageHeight: "",
 };
 
 const RUPEE = "\u20B9";
+
+function formatWeight(value) {
+  if (!value) {
+    return "--";
+  }
+
+  return `${value.toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1")} kg`;
+}
 
 function Reveal({ children, className = "", delay = 0 }) {
   const reduceMotion = useReducedMotion();
@@ -123,7 +134,7 @@ function HomePage() {
       <main>
         <section className="hero-gradient border-b border-[#d7edff]" id="hero" ref={heroRef}>
           <Motion.div
-            className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-28"
+            className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:px-8 lg:py-24"
             style={heroMotionStyle}
           >
             <Reveal className="max-w-3xl" delay={0.05}>
@@ -176,7 +187,7 @@ function HomePage() {
               </div>
             </Reveal>
 
-            <Motion.div className="grid gap-5" style={heroImageStyle}>
+            <Motion.div className="grid gap-5 lg:self-start" style={heroImageStyle}>
               <Reveal delay={0.08}>
                 <div className="surface-card overflow-hidden p-2">
                   <div className="relative overflow-hidden rounded-[1rem] border border-black/5 bg-slate-950">
@@ -219,9 +230,13 @@ function HomePage() {
                       <Typography className="mt-3 font-heading text-3xl tracking-[0.05em] text-slate-950" component="h2">
                         Quote a lane in seconds
                       </Typography>
+                      <Typography className="mt-3 max-w-xl text-sm leading-7 text-slate-500" component="p">
+                        Add dead weight plus package dimensions to see actual, volumetric, and billable
+                        weight before you book a shipment.
+                      </Typography>
                     </div>
                     <Chip
-                      label="Functional utility"
+                      label="5000 divisor"
                       sx={{
                         backgroundColor: "rgba(215, 237, 255, 0.85)",
                         borderRadius: "999px",
@@ -237,10 +252,11 @@ function HomePage() {
 
                   <div className="mt-6 grid gap-4 md:grid-cols-3">
                     <label className="form-field">
-                      <span>Package weight (kg)</span>
+                      <span>Dead weight (kg)</span>
                       <input
                         onChange={handleFieldChange("packageWeight")}
                         placeholder="0.5"
+                        step="0.01"
                         type="number"
                         value={shippingForm.packageWeight}
                       />
@@ -267,7 +283,71 @@ function HomePage() {
                     </label>
                   </div>
 
-                  <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <div className="mt-4 grid gap-4 md:grid-cols-3">
+                    <label className="form-field">
+                      <span>Length (cm)</span>
+                      <input
+                        min="1"
+                        onChange={handleFieldChange("packageLength")}
+                        placeholder="30"
+                        step="0.1"
+                        type="number"
+                        value={shippingForm.packageLength}
+                      />
+                    </label>
+                    <label className="form-field">
+                      <span>Width (cm)</span>
+                      <input
+                        min="1"
+                        onChange={handleFieldChange("packageWidth")}
+                        placeholder="24"
+                        step="0.1"
+                        type="number"
+                        value={shippingForm.packageWidth}
+                      />
+                    </label>
+                    <label className="form-field">
+                      <span>Height (cm)</span>
+                      <input
+                        min="1"
+                        onChange={handleFieldChange("packageHeight")}
+                        placeholder="18"
+                        step="0.1"
+                        type="number"
+                        value={shippingForm.packageHeight}
+                      />
+                    </label>
+                  </div>
+
+                  <Typography className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500" component="p">
+                    Volumetric weight = (length x width x height) / 5000
+                  </Typography>
+
+                  <div className="mt-6 grid gap-4 md:grid-cols-4">
+                    <div className="result-card">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                        Dead weight
+                      </p>
+                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                        {formatWeight(estimate.actualWeight)}
+                      </p>
+                    </div>
+                    <div className="result-card">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                        Volumetric
+                      </p>
+                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                        {formatWeight(estimate.volumetricWeight)}
+                      </p>
+                    </div>
+                    <div className="result-card">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                        Billable
+                      </p>
+                      <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-slate-950">
+                        {formatWeight(estimate.billableWeight)}
+                      </p>
+                    </div>
                     <div className="result-card">
                       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
                         Estimated cost
@@ -276,6 +356,9 @@ function HomePage() {
                         {estimate.estimatedCost ? `${RUPEE}${estimate.estimatedCost}` : "--"}
                       </p>
                     </div>
+                  </div>
+
+                  <div className="mt-4 grid gap-4 md:grid-cols-2">
                     <div className="result-card">
                       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
                         Shipping zone
@@ -565,140 +648,6 @@ function HomePage() {
                 </table>
               </div>
             </Reveal>
-          </div>
-        </section>
-
-        <section className="section-frame section-frame--dark" id="dashboard">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <SectionIntro
-              dark
-              description="A branded dashboard mockup that shows how shipment status, courier performance, and COD visibility can live in one system."
-              label="Dashboard Preview"
-              title="A cleaner command center for order flow, courier mix, and delivery visibility"
-            />
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-              <Reveal className="dashboard-shell">
-                <div className="dashboard-header">
-                  <div>
-                    <Typography className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60" component="p">
-                      Shipment Control
-                    </Typography>
-                    <Typography className="mt-2 font-heading text-3xl tracking-[0.06em] text-white" component="h3">
-                      CAMPLAR Ops Dashboard
-                    </Typography>
-                  </div>
-                  <Chip
-                    label="Live Preview"
-                    sx={{
-                      backgroundColor: "rgba(255,255,255,0.08)",
-                      borderRadius: "999px",
-                      color: "rgba(255,255,255,0.85)",
-                      fontFamily: '"Montserrat", sans-serif',
-                      fontSize: "0.68rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.16em",
-                      textTransform: "uppercase",
-                    }}
-                  />
-                </div>
-                <div className="grid gap-4 xl:grid-cols-[0.7fr_1.3fr]">
-                  <div className="dashboard-panel">
-                    <p className="dashboard-label">Today&apos;s shipment mix</p>
-                    <div className="mt-5 space-y-4">
-                      {[
-                        ["Delivered", "142"],
-                        ["In Transit", "56"],
-                        ["NDR Pending", "12"],
-                        ["COD Ready", "31"],
-                      ].map(([label, value]) => (
-                        <div key={label}>
-                          <div className="flex items-center justify-between text-sm text-white/72">
-                            <span>{label}</span>
-                            <span className="font-semibold text-white">{value}</span>
-                          </div>
-                          <div className="mt-2 h-2 rounded-full bg-white/8">
-                            <div className="h-full rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ffd3c0]" />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="grid gap-4">
-                    <div className="dashboard-panel">
-                      <div className="flex items-center justify-between gap-4">
-                        <p className="dashboard-label">Courier performance snapshot</p>
-                        <p className="text-xs uppercase tracking-[0.18em] text-white/45">Last 7 days</p>
-                      </div>
-                      <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                        {[
-                          ["Avg. cost", `${RUPEE}128`],
-                          ["On-time", "98.4%"],
-                          ["NDR recoveries", "71%"],
-                        ].map(([label, value]) => (
-                          <div key={label} className="rounded-[1rem] border border-white/10 bg-white/5 p-4">
-                            <p className="text-xs uppercase tracking-[0.18em] text-white/45">{label}</p>
-                            <p className="mt-3 font-heading text-3xl tracking-[0.08em] text-white">{value}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="dashboard-panel">
-                      <p className="dashboard-label">Recent orders</p>
-                      <div className="mt-5 grid gap-3">
-                        {[
-                          ["ORD-10291", "Delhivery", "In Transit"],
-                          ["ORD-10288", "Blue Dart", "Delivered"],
-                          ["ORD-10277", "Xpressbees", "NDR Follow-up"],
-                        ].map(([order, courier, status]) => (
-                          <div
-                            key={order}
-                            className="flex flex-col gap-2 rounded-[1rem] border border-white/10 bg-white/5 px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
-                          >
-                            <div>
-                              <p className="font-semibold text-white">{order}</p>
-                              <p className="text-sm text-white/55">{courier}</p>
-                            </div>
-                            <span className="rounded-full bg-[#ff5e14]/15 px-3 py-1 text-xs uppercase tracking-[0.18em] text-[#ffd3c0]">
-                              {status}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-
-              <div className="grid gap-4">
-                <Reveal delay={0.06}>
-                  <div className="dark-card p-6">
-                    <Typography className="section-kicker !text-[#ffd3c0]" component="p">
-                      Built for clarity
-                    </Typography>
-                    <Typography className="mt-3 font-heading text-3xl tracking-[0.05em] text-white" component="h3">
-                      See orders, performance, and payouts without tab overload
-                    </Typography>
-                    <Typography className="mt-4 text-sm leading-7 text-white/72" component="p">
-                      The preview combines delivery operations, courier choice, and financial
-                      visibility into a single operational surface.
-                    </Typography>
-                  </div>
-                </Reveal>
-                <Reveal delay={0.1}>
-                  <div className="dark-card p-6">
-                    <Typography className="section-kicker !text-[#ffd3c0]" component="p">
-                      Utilities carried forward
-                    </Typography>
-                    <ul className="mt-5 grid gap-3 text-sm leading-7 text-white/72">
-                      <li>Rate calculator logic preserved from the repo</li>
-                      <li>Tailwind-first layout strengthened with Material UI interactions</li>
-                      <li>Framer Motion reveal blocks and hero scroll collapse added</li>
-                    </ul>
-                  </div>
-                </Reveal>
-              </div>
-            </div>
           </div>
         </section>
 

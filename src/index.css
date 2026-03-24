@@ -148,7 +148,6 @@ summary::-webkit-details-marker {
 
 .surface-card::after,
 .dark-card::after,
-.dashboard-shell::after,
 .cta-panel::after {
   content: "";
   position: absolute;
@@ -297,41 +296,6 @@ summary::-webkit-details-marker {
   padding: 1.25rem;
 }
 
-.dashboard-shell {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background:
-    radial-gradient(circle at top left, rgba(255, 94, 20, 0.14), transparent 24%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-  padding: 1.5rem;
-  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.26);
-}
-
-.dashboard-header {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: space-between;
-  padding-bottom: 1.5rem;
-}
-
-.dashboard-panel {
-  border-radius: 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  padding: 1.25rem;
-}
-
-.dashboard-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.56);
-}
-
 .faq-card {
   border-radius: 1rem;
   border: 1px solid var(--line);
@@ -379,7 +343,6 @@ summary::-webkit-details-marker {
 }
 
 @media (min-width: 768px) {
-  .dashboard-header,
   .cta-panel {
     flex-direction: row;
     align-items: end;
