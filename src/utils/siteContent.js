@@ -52,13 +52,23 @@ export const trustStats = [
   { value: "1000+", label: "Satisfied clients served" },
 ];
 
-export const clientLogos = [
-  { name: "TrendyStyles", accent: "from-red-500/20 to-red-500/5" },
-  { name: "GlobalTech", accent: "from-slate-700/20 to-slate-700/5" },
-  { name: "Tech Innovators", accent: "from-zinc-900/20 to-zinc-900/5" },
-  { name: "UrbanKart", accent: "from-amber-500/20 to-amber-500/5" },
-  { name: "MediSure", accent: "from-emerald-500/20 to-emerald-500/5" },
-  { name: "AutoAxis", accent: "from-sky-500/20 to-sky-500/5" },
+export const businessSegments = [
+  {
+    title: "B2B shipping operations",
+    badge: "B2B",
+    accent: "from-[#001d67]/12 via-[#d7edff]/30 to-[#001d67]/5",
+    description:
+      "Built for distributors, wholesalers, and procurement teams handling high-value shipments across recurring business lanes.",
+    points: ["Bulk dispatch scheduling", "Invoice & GST-ready records", "SLA-focused courier allocation"],
+  },
+  {
+    title: "B2C fulfilment at scale",
+    badge: "B2C",
+    accent: "from-[#ff5e14]/12 via-[#ffe5d7]/35 to-[#ff5e14]/8",
+    description:
+      "Optimized for D2C brands and ecommerce teams that need fast delivery, predictable costs, and seamless post-order updates.",
+    points: ["Fast checkout-to-ship flow", "Real-time tracking updates", "COD + NDR workflow automation"],
+  },
 ];
 
 export const steps = [

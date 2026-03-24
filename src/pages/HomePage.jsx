@@ -13,7 +13,7 @@ import SiteFooter from "../components/site/SiteFooter";
 import SiteHeader from "../components/site/SiteHeader";
 import { calculateShippingEstimate } from "../utils/shippingCalculator";
 import {
-  clientLogos,
+  businessSegments,
   courierPartners,
   faqs,
   features,
@@ -243,7 +243,7 @@ function HomePage() {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <Chip
-                      label="Client logos"
+                      label="Business fit"
                       sx={{
                         backgroundColor: "rgba(255, 94, 20, 0.12)",
                         borderRadius: "999px",
@@ -256,34 +256,65 @@ function HomePage() {
                       }}
                     />
                     <Typography className="mt-3 font-heading text-3xl tracking-[0.05em] text-slate-950" component="h3">
-                      Teams we are built to support
+                      Purpose-built for both B2B and B2C shipping teams
                     </Typography>
                   </div>
                   <Typography className="max-w-xl text-sm leading-7 text-slate-500" component="p">
-                    CAMPLAR fits D2C brands, marketplaces, distributors, and operations-heavy teams
-                    that need cleaner shipping decisions.
+                    Whether you manage wholesale dispatches or direct-to-customer fulfilment, CAMPLAR
+                    adapts workflows to each shipping motion without operational complexity.
                   </Typography>
                 </div>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                  {clientLogos.map((item, index) => (
-                    <Reveal key={item.name} delay={0.08 + index * 0.04}>
-                      <div
-                        className={`rounded-[1rem] border border-slate-200 bg-gradient-to-br ${item.accent} p-5`}
+                <div className="mt-8 grid gap-4 lg:grid-cols-2">
+                  {businessSegments.map((item, index) => (
+                    <Reveal key={item.badge} delay={0.08 + index * 0.06}>
+                      <Motion.article
+                        className={`rounded-[1rem] border border-slate-200 bg-gradient-to-br ${item.accent} p-6`}
+                        initial={reduceMotion ? false : { opacity: 0, scale: 0.97 }}
+                        transition={reduceMotion ? undefined : { duration: 0.55, delay: 0.14 + index * 0.08 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
                       >
-                        <div className="flex items-center gap-4">
-                          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white font-heading text-xl tracking-[0.12em] text-slate-950 shadow-sm">
-                            {item.name.slice(0, 2).toUpperCase()}
-                          </div>
-                          <div>
-                            <Typography className="font-heading text-xl tracking-[0.08em] text-slate-950" component="p">
-                              {item.name}
-                            </Typography>
-                            <Typography className="text-sm text-slate-500" component="p">
-                              Operational shipping client
-                            </Typography>
-                          </div>
+                        <div className="flex items-start justify-between gap-3">
+                          <Typography className="font-heading text-2xl tracking-[0.05em] text-slate-950" component="h4">
+                            {item.title}
+                          </Typography>
+                          <Chip
+                            label={item.badge}
+                            sx={{
+                              backgroundColor: "rgba(0, 29, 103, 0.08)",
+                              borderRadius: "999px",
+                              color: "#001d67",
+                              fontFamily: '"Montserrat", sans-serif',
+                              fontSize: "0.65rem",
+                              fontWeight: 700,
+                              letterSpacing: "0.18em",
+                              textTransform: "uppercase",
+                            }}
+                          />
                         </div>
-                      </div>
+                        <Typography className="mt-4 text-sm leading-7 text-slate-600" component="p">
+                          {item.description}
+                        </Typography>
+                        <ul className="mt-5 space-y-2">
+                          {item.points.map((point, pointIndex) => (
+                            <Motion.li
+                              key={point}
+                              className="flex items-center gap-3 text-sm text-slate-700"
+                              initial={reduceMotion ? false : { opacity: 0, x: -12 }}
+                              transition={
+                                reduceMotion
+                                  ? undefined
+                                  : { duration: 0.42, delay: 0.2 + index * 0.08 + pointIndex * 0.06 }
+                              }
+                              viewport={{ once: true, amount: 0.4 }}
+                              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+                            >
+                              <span className="h-2 w-2 rounded-full bg-[#ff5e14]" />
+                              {point}
+                            </Motion.li>
+                          ))}
+                        </ul>
+                      </Motion.article>
                     </Reveal>
                   ))}
                 </div>
