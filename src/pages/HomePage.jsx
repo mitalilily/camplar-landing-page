@@ -193,7 +193,7 @@ function HomePage() {
                   <div className="relative overflow-hidden rounded-[1rem] border border-black/5 bg-slate-950">
                     <img
                       alt="Camplar logistics operations"
-                      className="h-[360px] w-full object-cover opacity-90 sm:h-[420px]"
+                      className="h-[360px] w-full bg-slate-950 object-contain opacity-90 sm:h-[420px]"
                       loading="eager"
                       src={heroContent.image}
                     />
@@ -332,7 +332,7 @@ function HomePage() {
             <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2 xl:grid-cols-5">
               {features.map((item, index) => (
                 <Reveal key={item.title} className="h-full" delay={index * 0.05}>
-                  <article className="surface-card flex flex-col p-6">
+                  <article className="surface-card flex h-full flex-col p-6">
                     <Chip
                       label={item.badge}
                       sx={{
